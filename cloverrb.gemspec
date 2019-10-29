@@ -6,8 +6,8 @@ require "cloverrb/version"
 Gem::Specification.new do |spec|
   spec.name          = "cloverrb"
   spec.version       = Cloverrb::VERSION
-  spec.authors       = ["Arman Jon Villalobos"]
-  spec.email         = ["me@armanjon.com"]
+  spec.authors       = ["Arman Jon Villalobos", "Mike Heft"]
+  spec.email         = ["mheft@showoff.ie"]
 
   spec.summary       = %q{Ruby wrapper for Clover API}
   spec.description   = %q{Ruby wrapper for Clover API}
