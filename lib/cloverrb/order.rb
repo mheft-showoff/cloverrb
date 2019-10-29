@@ -1,8 +1,5 @@
 module Cloverrb
   class Order < Client
-    def initialize(token)
-      @token = token
-    end
 
     def all(merchant_id, options = {})
       url = "/merchants/#{merchant_id}/orders?"
