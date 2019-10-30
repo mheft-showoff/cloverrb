@@ -26,7 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock"
 
-  spec.add_dependency 'omniauth-oauth2', '~> 1.5.0'
   spec.add_dependency "httparty"
   spec.add_dependency "dotenv"
   spec.add_dependency "activesupport"
