@@ -48,7 +48,7 @@ module Cloverrb
     private
 
     def set_base_url(sandbox)
-      sandbox ? "https://apisandbox.dev.clover.com/v3" : "https://api.clover.com/v3"
+      sandbox ? "https://apisandbox.dev.clover.com/v3" : "https://api.eu.clover.com/v3"
     end
 
     def build_headers(token)
