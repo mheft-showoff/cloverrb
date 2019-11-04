@@ -13,7 +13,7 @@ module Cloverrb
     end
 
     def get(token, path)
-      HTTParty.get(base_url + path, headers: build_headers(token)).parsed_response
+      HTTParty.get(base_url + path, headers: build_headers(token)).parsed_response.deep_symbolize_keys!
     end
 
     def post(token, path, body)
@@ -21,7 +21,7 @@ module Cloverrb
         base_url + path,
         headers: build_headers(token),
         query: body
-      ).parsed_response
+      ).parsed_response.deep_symbolize_keys!
     end
 
     def put(token, path, body)
@@ -29,7 +29,7 @@ module Cloverrb
         base_url + path,
         headers: build_headers(token),
         query: body
-      ).parsed_response
+      ).parsed_response.deep_symbolize_keys!
     end
 
     def self.generate_access_token(client_id, code, app_secret)
