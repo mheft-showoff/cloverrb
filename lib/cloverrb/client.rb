@@ -5,11 +5,11 @@ module Cloverrb
 
     attr_reader :token, :merchant_id, :order_id, :base_url
 
-    def initialize(params, sandbox = false)
+    def initialize(params)
       @token = params[:token]
       @merchant_id = params[:merchant_id]
       @order_id = params[:order_id]
-      @base_url = set_base_url(sandbox)
+      @base_url = set_base_url(params[:sandbox])
     end
 
     def get(token, path)
