@@ -1,5 +1,5 @@
 module Cloverrb
-  class Tag < Client
+  class ModifierGroup < Client
 
     def all(role=nil)
       url = "/merchants/#{@merchant_id}/tags"
