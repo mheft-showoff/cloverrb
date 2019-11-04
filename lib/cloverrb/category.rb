@@ -2,7 +2,7 @@ module Cloverrb
   class Category < Client
 
     def all(role=nil)
-      url = "/merchants/#{@merchant_id}/categories"
+      url = "/merchants/#{@merchant_id}/categories?expand=items"
       url += "?filter=role=#{role}" if role
       get(@token, url)
     end
