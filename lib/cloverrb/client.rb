@@ -1,23 +1,24 @@
 module Cloverrb
   class Client
-    BASE_URL = "https://api.clover.com/v3"
+    # BASE_URL = "https://api.clover.com/v3"
     AUTH_URL = "https://clover.com/oauth/token"
 
-    attr_reader :token, :merchant_id, :order_id
+    attr_reader :token, :merchant_id, :order_id, :base_url
 
-    def initialize(params)
+    def initialize(params, sandbox = false)
       @token = params[:token]
       @merchant_id = params[:merchant_id]
       @order_id = params[:order_id]
+      @base_url = set_base_url(sandbox)
     end
 
     def get(token, path)
-      HTTParty.get(BASE_URL + path, headers: build_headers(token)).parsed_response
+      HTTParty.get(base_url + path, headers: build_headers(token)).parsed_response
     end
 
     def post(token, path, body)
       HTTParty.post(
-        BASE_URL + path,
+        base_url + path,
         headers: build_headers(token),
         query: body
       ).parsed_response
@@ -25,7 +26,7 @@ module Cloverrb
 
     def put(token, path, body)
       HTTParty.put(
-        BASE_URL + path,
+        base_url + path,
         headers: build_headers(token),
         query: body
       ).parsed_response
@@ -46,9 +47,13 @@ module Cloverrb
 
     private
 
+    def set_base_url(sandbox)
+      sandbox ? "https://apisandbox.dev.clover.com/v3" : "https://api.clover.com/v3"
+    end
+
     def build_headers(token)
       { "Authorization" => "Bearer #{token}"}
-    end 
+    end
 
     def self.build_query(client_id, code, app_secret)
       {
@@ -56,6 +61,6 @@ module Cloverrb
         "client_secret" => app_secret,
         "code" => code
       }
-    end 
+    end
   end
 end
