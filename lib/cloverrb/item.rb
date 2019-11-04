@@ -2,13 +2,12 @@ module Cloverrb
   class Item < Client
 
     def all(role=nil)
-      url = "/merchants/#{@merchant_id}/items?expand=categories%2Ctags"
-      url += "?filter=role=#{role}" if role
+      url = "/merchants/#{@merchant_id}/items?expand=tags%2Ccategories"
       get(@token, url)
     end
 
     def find(id)
-      url = "/merchants/#{@merchant_id}/items/#{id}?expand=categories%2Ctags"
+      url = "/merchants/#{@merchant_id}/items/#{id}?expand=tags%2Ccategories"
       get(@token, url)
     end
 
